@@ -2,93 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bde337f6-40c6-45f9-8059-13796d6a510e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Snort/classification.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/community-sid-msg.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/gen-msg.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/reference.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/attack-responses.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/backdoor.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/bad-traffic.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/chat.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-bot.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-deleted.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-dos.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-exploit.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-ftp.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-game.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-icmp.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-imap.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-inappropriate.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-mail-client.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-misc.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-nntp.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-oracle.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-policy.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-sip.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-smtp.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-sql-injection.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-virus.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-attacks.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-cgi.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-client.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-dos.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-iis.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-misc.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-php.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/ddos.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/deleted.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/dns.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/dos.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/experimental.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/exploit.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/finger.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/ftp.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/icmp-info.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/icmp.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/imap.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/info.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/local.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/misc.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/multimedia.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/mysql.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/netbios.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/nntp.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/oracle.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/other-ids.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/p2p.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/policy.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/pop2.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/pop3.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/porn.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/rpc.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/rservices.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/scan.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/shellcode.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/smtp.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/snmp.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/snortRules.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/sql.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/telnet.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/tftp.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/virus.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/web-attacks.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/web-cgi.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/web-client.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/web-coldfusion.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/web-frontpage.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/web-iis.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/web-misc.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/web-php.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/rules/x11.rules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/snort.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/snort.debian.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/threshold.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Snort/unicode.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pcap3Rules/Pcap3Rules.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pcap3Rules/Pcap3Rules.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snort/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pyotidsai.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyotidsai.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traff.pcap" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -147,13 +62,13 @@
         <counts>
           <entry key="conf" value="24" />
           <entry key="dummy" value="17" />
-          <entry key="py" value="1156" />
+          <entry key="py" value="1171" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="41" />
-          <entry key="Python" value="1156" />
+          <entry key="Python" value="1171" />
         </counts>
       </usages-collector>
     </session>
@@ -163,11 +78,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pyotidsai.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="121" column="30" lean-forward="true" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
+            <state relative-caret-position="188">
+              <caret line="104" column="57" lean-forward="true" selection-start-line="104" selection-start-column="57" selection-end-line="104" selection-end-column="57" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
-                <marker date="1575156854527" expanded="true" signature="5337:6095" ph="..." />
+                <marker date="1575157162783" expanded="true" signature="5369:6135" ph="..." />
               </folding>
             </state>
           </provider>
@@ -427,11 +342,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pyotidsai.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="121" column="30" lean-forward="true" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
+        <state relative-caret-position="188">
+          <caret line="104" column="57" lean-forward="true" selection-start-line="104" selection-start-column="57" selection-end-line="104" selection-end-column="57" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-            <marker date="1575156854527" expanded="true" signature="5337:6095" ph="..." />
+            <marker date="1575157162783" expanded="true" signature="5369:6135" ph="..." />
           </folding>
         </state>
       </provider>

@@ -97,19 +97,19 @@ Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
             for output in a.stdout:
                 # print(str(output))
                 if 'NMAP' in output.decode("utf-8"):
-                    print("({0}) Ataque de NMAP detectado".format(date))
+                    print("({0}) Ataque de NMAP detectado".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Ataque de NMAP detectado"')
                 if 'SNMP' in output.decode("utf-8"):
-                    print("({0}) Ataque via SNMP - Posible escaneo de puertos".format(date))
+                    print("({0}) Ataque via SNMP - Posible escaneo de puertos".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Posible escaneo de puertos"')
                 if 'ICMP PING' in output.decode("utf-8"):
-                    print("({0}) Peticiones de ICMP".format(date))
+                    print("({0}) Peticiones de ICMP".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Peticiones de ICMP"')
                 if 'ICMP Echo Reply' in output.decode("utf-8"):
-                    print("({0}) Respuesta ICMP".format(date))
+                    print("({0}) Respuesta ICMP".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Respuesta ICMP"')
                 if 'DDOS mstream client to handler' in output.decode("utf-8"):
-                    print("({0}) Ataque DOS mstream cliente a escucha - (Se esta recibiendo muchos paquetes)".format(date))
+                    print("({0}) Ataque DOS mstream cliente a escucha - (Se esta recibiendo muchos paquetes)".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Ataque DOS mstream cliente a escucha"')
                 if 'BAD-TRAFFIC' in output.decode("utf-8"):
                     print("[!] Buscando paquetes")
