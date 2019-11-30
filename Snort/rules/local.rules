@@ -1,0 +1,59 @@
+# $Id: local.rules,v 1.11 2004/07/23 20:15:44 bmc Exp $
+# ----------------
+# LOCAL RULES
+# ----------------
+# This file intentionally does not come with signatures.  Put your local
+# additions here.
+
+
+#alert icmp any any -> $HOME_NET any (msg:"ICMP test"; sid:1000001; rev:1;)
+alert tcp any any -> $HOME_NET any (msg:"Escaneo con Nmap en la red";flags:A;ack:o; reference:arachnids,28;classtype:attempted-recon; sid:628;rev:1;)
+alert icmp any any -> $HOME_NET any (msg:"NMAP ping scan"; dsize:0;sid:10000004; rev: 1;)
+
+alert tcp any any -> $HOME_NET $HTTP_PORTS (msg:"Metasploit Meterpreter"; flow:to_server,established; content:"RECV"; http_client_body; depth:4; fast_pattern; isdataat:!0,relative; urilen:23<>24,norm; content:"POST"; pcre:"/^\/[a-z0-9]{4,5}_[a-z0-9]{16}\/$/Ui"; classtype:trojan-activity; reference:url,blog.didierstevens.com/2015/05/11/detecting-network-traffic-from-metasploits-meterpreter-reverse-http-module/; sid:1618008; rev:1;)
+
+alert tcp any any -> $HOME_NET 21 (msg:"Exploit FreeFTPd PASS Command Buffer Overflow detectado"; content:"USER anonymous"; content:"PASS"; pcre:"/^PASS\s[^\n]{100}/smi"; classtype:shellcode-detect; sid:1504001; rev:1; nocase;)
+
+alert tcp any any -> $HOME_NET 21 (msg:"UOC – Anonymous FTP Access"; content:"USER anonymous"; classtype:suspicious-login; sid:99999901; rev:1;)
+
+alert tcp any any -> $HOME_NET 21 (msg:"UOC – Exploit VSFTPD v.2.3.4 Backdoor Command Execute"; content:"USER"; content:":)"; classtype:suspicious-login; sid:99999902; rev:1;)
+
+alert tcp any any -> $HOME_NET 139 (msg:"UOC – Exploit Samba ‘username map script’ Command Execution"; content:"|2f 3d 60 6e 6f 68 75 70 20|"; classtype:string-detect; sid:99999903; rev:1; reference:cve,2007-2447;)
+
+alert tcp any any -> $HOME_NET 8080 (msg:"UOC – Exploit Java RMI Server Insecure Configuration Java Code Execution"; uricontent:".jar"; content:"GET"; http_method; pcre:"/\/(\w|\d)+\/(\w|\d)+\.jar/i"; classtype:suspicious-filename-detect; sid:99999904; rev:1;)
+
+alert tcp any any -> $HOME_NET 80 (msg:"UOC – Exploit PHP CGI Argument Injection"; content:"allow_url_include"; content:"auto_prepend_file%3dphp://input"; content:"POST"; http_method; classtype:web-application-attack; sid:99999905; rev:1; reference:cve,2012-1823;)
+
+alert tcp any any -> $HOME_NET 6667 (msg:"UOC – Exploit UnrealIRCD 3.2.8.1 Backdoor Command Execution"; content:"|41 42 3b 73 68|"; classtype:string-detect; sid:99999906; rev:1; reference:cve,2010-2075;)
+
+alert tcp any any -> $HOME_NET 3632 (msg:"UOC – Exploit DistCC Daemon Command Execution"; content:"DIST00000001"; content:"sh -c"; content:"main.c"; content:"main.o"; classtype:string-detect; sid:99999907; rev:1; reference:cve,2004-2687;)
+
+alert tcp any any -> $HOME_NET 8180 (msg:"UOC – Exploit Apache Tomcat Manager Application Deployer Authenticated Code Execution"; content:"/manager/deploy?path=/"; content:"WEB-INF"; content:"metasploit"; content:"PUT"; http_method; classtype:web-application-attack; sid:99999908; rev:1;)
+
+alert tcp any any -> $HOME_NET 8787 (msg:"UOC – Exploit Distributed Ruby Send instance_eval/syscall Code Execution"; content:"syscall"; content:"!/bin/sh"; content:"sh -c"; classtype:string-detect; sid:99999909; rev:1;)
+
+alert icmp any any -> $HOME_NET any (msg:"NMAP ping sweep Scan"; dsize:0;sid:10000004; rev:1;)
+
+alert tcp any any -> $HOME_NET 22 (msg:"Nmap FIN Scan"; flags:F; sid:1000008; rev:1;)
+
+alert tcp any any -> $HOME_NET 22 (msg:"Nmap NULL Scan"; flags:0; sid:1000009; rev:1;)
+
+alert udp any any -> $HOME_NET any ( msg:"meterpreter via UDP"; sid:1000010; rev:1;)
+
+alert tcp $HOME_NET 23 -> $EXTERNAL_NET any (msg:"TELNET Bad Login"; content: "Login incorrect"; nocase; flags:A+; classtype:bad-unknown; sid:1251; rev:2;)
+
+alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg:"INFO FTP \"MKD / \" possible warez site"; flags: A+; content:"MKD / "; nocase; depth: 6; classtype:misc-activity; sid:554; rev:3;)
+
+alert tcp $EXTERNAL_NET any -> $HTTP_SERVERS 80 (msg:"WEB-IIS multiple decode attempt"; flags:A+; uricontent:"%5c"; uricontent:".."; reference:cve,CAN-2001-0333; classtype:web-application-attack; sid:970; rev:2;)
+
+alert tcp $EXTERNAL_NET any -> $HTTP_SERVERS 80 (msg:"WEB-IIS cmd.exe access"; flags: A+; content:"cmd.exe"; nocase; classtype:web-application-attack; sid:1002; rev:2;)
+alert tcp $EXTERNAL_NET 27374 -> $HOME_NET any (msg:"BACKDOOR subseven 22"; flags: A+; content: "|0d0a5b52504c5d3030320d0a|"; reference:arachnids,485; reference:url,www.hackfix.org/subseven/; sid:103; classtype:misc-activity; rev:4;) 
+
+#alert tcp $EXTERNAL_NET any -> $HTTP_SERVERS 80 (msg:"WEB-IIS multiple decode attempt"; flags:A+; uricontent:"%5c"; uricontent:".."; reference:cve,CAN-2001-0333; classtype:web-application-attack; sid:970; rev:2;)
+
+#alert tcp $EXTERNAL_NET any -> $SQL_SERVERS 1433 (msg:"MS-SQL xp_cmdshell - program execution"; content: "x|00|p|00|_|00|c|00|m|00|d|00|s|00|h|00|e|00|l|00|l|00|"; nocase; flags:A+; classtype:attempted-user; sid:687; rev:3;)
+
+#alert tcp any any -> 192.168.1.105 22 (msg:"Nmap XMAS Tree Scan"; flags:FPU; sid:1000006; rev:1;)
+
+
+

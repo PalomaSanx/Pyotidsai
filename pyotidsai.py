@@ -1,17 +1,19 @@
 import subprocess
 # from PIL import Image
 import io
+
+
 from scapy.all import *
 from scapy.contrib import mqtt
-import pyfiglet
+#import pyfiglet
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import numpy as np
-import hexdump
-
+#import hexdump
+import os, time, subprocess
+import shutil
 from Pcap3Rules import Pcap3Rules
-
-
+from datetime import datetime, date
 
 # Usage: SplitCap [OPTIONS]...
 #
@@ -39,7 +41,7 @@ from Pcap3Rules import Pcap3Rules
 # Example 4: SplitCap -r dumpfile.pcap -s flow -y L7
 # Example 5: SplitCap -r dumpfile.pcap -ip 1.2.3.4 -port 80 -port 443 -s nosplit
 
-
+"""
 def split_by_session(pcap_path: str):
     args = ("SplitCap/SplitCap.exe", "-r", pcap_path, "-s", "session")
     return execute(args).decode()
@@ -54,31 +56,98 @@ def execute(args):
     popen = subprocess.Popen(args, stdout=subprocess.PIPE)
     popen.wait()
     return popen.stdout.read()
-
+"""
 
 if __name__ == '__main__':
     # split_by_session('IoT_Keylogging__00003_20180619141524.pcap')
     # split_by_host('IoT_Keylogging__00003_20180619141524.pcap')
 
+    def menu():
+        ########################## HELLO #############################
+        """ascii_banner = pyfiglet.figlet_format("Pyotidsai!!")
+        print(ascii_banner)"""
+        print(""" 
+                                                                                        
+                                  mm      db        7MM                     db  
+                                  MM                 MM                         
+`7MMpdMAo. `7M'   `MF' ,pW"Wq.  mmMMmm  `7MM    ,M""bMM  ,pP"Ybd  ,6"Yb.   7MM  
+  MM   `Wb   VA   ,V  6W'   `Wb   MM      MM  ,AP    MM  8I   `" 8)   MM    MM  
+  MM    M8    VA ,V   8M     M8   MM      MM  8MI    MM  `YMMMa.  ,pm9MM    MM  
+  MM   ,AP     VVV    YA.   ,A9   MM      MM  `Mb    MM  L.   I8 8M   MM    MM  
+  MMbmmd'      ,V      `Ybmd9'    `Mbmo .JMML. `Wbmd"MML.M9mmmP' `Moo9^Yo..JMML.
+  MM          ,V                                                                
+.JMML.     OOb"                                                                 
 
-    ########################## HELLO #############################
-    ascii_banner = pyfiglet.figlet_format("Pyotidsai!!")
-    print(ascii_banner)
-    ######################### Options ############################
-    print('Introduce la opción deseada '
-          '\n(1) Seleccionar pcap'
-          '\n(2) Crear reglas'
-          '\n(3) Detectar malware(SNORT)')
-    opt = input()
-    if (opt == '1'):
-        pcap = input('introduce pcap a analizar:')
-    if (opt == '2'):
-        args = ("python","Pcap3Rules/Pcap3Rules.py", "-r", pcap, "-s")
-        execute(args).decode()
-        print('Finalizado')
-    if (opt == '3'):
-        print('holi')
+Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
+""")
 
+        ######################### MENU ############################
+        print("\n [!] Bienvenid@ a Pyotidsai.")
+        print('\n [!] Introduce la opción deseada '
+              '\n [!] (1) Crear reglas'
+              '\n [!] (2) Detectar malware(SNORT)'
+              '\n [!] (0) Salir')
+
+
+    def snort():
+        if informacion == "s" or informacion == "S":
+            os.system("stdbuf -o0 snort -A console --daq dump -q -c Snort/snort.conf -i eth0")
+        else:
+            a = subprocess.Popen("stdbuf -o0 snort -A console --daq dump -q -c Snort/snort.conf -i eth0".split(),stdout=subprocess.PIPE, bufsize=1)
+            for output in a.stdout:
+                # print(str(output))
+                if 'NMAP' in output.decode("utf-8"):
+                    print("({0}) Ataque de NMAP detectado".format(date))
+                    os.system('notify-send "Pyotidsai" "Ataque de NMAP detectado"')
+                if 'SNMP' in output.decode("utf-8"):
+                    print("({0}) Ataque via SNMP - Posible escaneo de puertos".format(date))
+                    os.system('notify-send "Pyotidsai" "Posible escaneo de puertos"')
+                if 'ICMP PING' in output.decode("utf-8"):
+                    print("({0}) Peticiones de ICMP".format(date))
+                    os.system('notify-send "Pyotidsai" "Peticiones de ICMP"')
+                if 'ICMP Echo Reply' in output.decode("utf-8"):
+                    print("({0}) Respuesta ICMP".format(date))
+                    os.system('notify-send "Pyotidsai" "Respuesta ICMP"')
+                if 'DDOS mstream client to handler' in output.decode("utf-8"):
+                    print("({0}) Ataque DOS mstream cliente a escucha - (Se esta recibiendo muchos paquetes)".format(date))
+                    os.system('notify-send "Pyotidsai" "Ataque DOS mstream cliente a escucha"')
+                if 'BAD-TRAFFIC' in output.decode("utf-8"):
+                    print("[!] Buscando paquetes")
+                if 'ARP' in output.decode("utf-8"):
+                    print("[!] Posible ataque ARP detectado")
+                    os.system('notify-send "Pyotidsai" "Posible ataque ARP detectado"')
+                if 'meterpreter' in output.decode("utf-8"):
+                    print("[!] Conexion meterpreter detectada via UDP.")
+                    os.system('notify-send "Pyotidsai" "Conexion meterpreter detectada"')
+        print("[*] ERROR [*]")
+
+
+    while True:
+        menu()
+        opt = input()
+        pcap = ""
+        if opt == '1':
+                pcap = input('introduce pcap a analizar:')
+                subprocess.run(["python", "Pcap3Rules/Pcap3Rules.py", "-r", pcap, "-s"])
+                print('Finalizado. Se han creado las reglas.')
+                ver = input('[!] ¿Desea ver las reglas creadas? [S/N]')
+                if ver == 'S' or ver == 's':
+                    with (open('snortRules.rules', 'r')) as file:
+                        data = file.read()
+                        print("\x1b[1;33m"+data+'\033[0;m')
+                shutil.copy('snortRules.rules', 'Snort/rules')
+
+        elif opt == '2':
+            print("[!] Este programa esta creando un pcap en la misma ruta que Pyotidsai, [LOG]")
+            print("[!] Estamos analizando los paquetes por posibles ataques\n")
+            informacion = str(input("\n"+"\033[4;35m"+"[+] Desea ver informacion mas completa (snort) [S/N]: "+'\033[0;m'))
+            snort()
+        elif opt == '0':
+            print('Hasta la próxima!!')
+            break;
+        else:
+            print("")
+            input("No has pulsado ninguna opción correcta...\npulsa una tecla para continuar")
 
     """
     

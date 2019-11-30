@@ -1,7 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bde337f6-40c6-45f9-8059-13796d6a510e" name="Default Changelist" comment="" />
+    <list default="true" id="bde337f6-40c6-45f9-8059-13796d6a510e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Snort/classification.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/community-sid-msg.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/gen-msg.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/reference.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/attack-responses.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/backdoor.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/bad-traffic.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/chat.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-bot.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-deleted.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-dos.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-exploit.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-ftp.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-game.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-icmp.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-imap.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-inappropriate.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-mail-client.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-misc.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-nntp.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-oracle.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-policy.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-sip.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-smtp.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-sql-injection.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-virus.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-attacks.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-cgi.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-client.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-dos.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-iis.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-misc.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/community-web-php.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/ddos.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/deleted.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/dns.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/dos.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/experimental.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/exploit.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/finger.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/ftp.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/icmp-info.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/icmp.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/imap.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/info.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/local.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/misc.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/multimedia.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/mysql.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/netbios.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/nntp.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/oracle.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/other-ids.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/p2p.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/policy.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/pop2.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/pop3.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/porn.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/rpc.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/rservices.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/scan.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/shellcode.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/smtp.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/snmp.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/snortRules.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/sql.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/telnet.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/tftp.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/virus.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/web-attacks.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/web-cgi.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/web-client.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/web-coldfusion.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/web-frontpage.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/web-iis.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/web-misc.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/web-php.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/rules/x11.rules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/snort.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/snort.debian.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/threshold.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Snort/unicode.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pcap3Rules/Pcap3Rules.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pcap3Rules/Pcap3Rules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snort/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyotidsai.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyotidsai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traff.pcap" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,7 +97,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Pyotidsai$pyotidsai.coverage" NAME="pyotidsai Coverage Results" MODIFIED="1575139058019" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pyotidsai$pyotidsai.coverage" NAME="pyotidsai Coverage Results" MODIFIED="1575156444137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -35,64 +123,54 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="binaryPcap" value="1" />
+          <entry key="conf" value="3" />
+          <entry key="config" value="2" />
+          <entry key="gitattributes" value="1" />
+          <entry key="map" value="3" />
           <entry key="md" value="1" />
-          <entry key="pcap" value="2" />
-          <entry key="png" value="1" />
-          <entry key="py" value="2" />
-          <entry key="rules" value="1" />
+          <entry key="pcap" value="3" />
+          <entry key="png" value="2" />
+          <entry key="py" value="5" />
+          <entry key="rules" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Image" value="1" />
+          <entry key="Image" value="2" />
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="2" />
+          <entry key="PLAIN_TEXT" value="17" />
+          <entry key="Python" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="conf" value="24" />
           <entry key="dummy" value="17" />
-          <entry key="py" value="125" />
+          <entry key="py" value="1156" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="17" />
-          <entry key="Python" value="125" />
+          <entry key="PLAIN_TEXT" value="41" />
+          <entry key="Python" value="1156" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Pcap3Rules/Pcap3Rules.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="233" column="25" selection-start-line="233" selection-start-column="25" selection-end-line="233" selection-end-column="25" />
-              <folding>
-                <element signature="e#524#537#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pyotidsai.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+            <state relative-caret-position="477">
+              <caret line="121" column="30" lean-forward="true" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
+                <marker date="1575156854527" expanded="true" signature="5337:6095" ph="..." />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/traff.pcap">
-          <provider selected="true" editor-type-id="LargeFileEditor" />
         </entry>
       </file>
     </leaf>
@@ -104,12 +182,18 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>date</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/Snort/snort.conf" />
         <option value="$PROJECT_DIR$/Pcap3Rules/Pcap3Rules.py" />
         <option value="$PROJECT_DIR$/pyotidsai.py" />
       </list>
@@ -144,7 +228,7 @@
             <path>
               <item name="Pyotidsai" type="b2602c69:ProjectViewProjectNode" />
               <item name="Pyotidsai" type="462c0819:PsiDirectoryNode" />
-              <item name="Pcap3Rules" type="462c0819:PsiDirectoryNode" />
+              <item name="Snort" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -154,12 +238,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/snort3-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\palom\PycharmProjects\Pyotidsai\Snort\rules" />
+      <recent name="C:\Users\palom\PycharmProjects\Pyotidsai\Snort" />
       <recent name="C:\Users\palom\PycharmProjects\Pyotidsai" />
       <recent name="C:\Users\palom\PycharmProjects\Pyotidsai\Snort3Rules" />
     </key>
@@ -219,20 +306,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19894099" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16490166" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" weight="0.39443535" />
+      <window_info anchor="bottom" id="Terminal" weight="0.40752864" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38625205" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36006546" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -251,9 +339,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/image.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Snort3Rules/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -268,13 +353,72 @@
     <entry file="file://$PROJECT_DIR$/test.pcap">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/binaryPcap">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/traff.pcap">
       <provider selected="true" editor-type-id="LargeFileEditor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/snortRules.rules">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snort/rules/dns.rules">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snort/classification.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-927" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snort/community-sid-msg.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-13953" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snort/snort.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="696" column="35" selection-start-line="696" selection-start-column="35" selection-end-line="696" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snort/unicode.map">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snort/threshold.conf">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snort/snort.debian.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-111" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snort/reference.config">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snort/gen-msg.map">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snort/rules/snortRules.rules">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/subprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="471" selection-start-line="471" selection-end-line="471" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Pcap3Rules/Pcap3Rules.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="233" column="25" selection-start-line="233" selection-start-column="25" selection-end-line="233" selection-end-column="25" />
+        <state relative-caret-position="209">
+          <caret line="27" column="13" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
           <folding>
             <element signature="e#524#537#0" expanded="true" />
           </folding>
@@ -283,10 +427,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pyotidsai.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+        <state relative-caret-position="477">
+          <caret line="121" column="30" lean-forward="true" selection-start-line="121" selection-start-column="30" selection-end-line="121" selection-end-column="30" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
+            <marker date="1575156854527" expanded="true" signature="5337:6095" ph="..." />
           </folding>
         </state>
       </provider>

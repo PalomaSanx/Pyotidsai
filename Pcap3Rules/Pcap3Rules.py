@@ -25,7 +25,7 @@ def sid_gen():
     sid_num += 1
     return str(sid_num)
 
-def save(rule: str):
+def save(rule):
     file = open('snortRules.rules', 'a')
     file.writelines(rule + "\n")
 
