@@ -14,6 +14,7 @@ import os, time, subprocess
 import shutil
 from Pcap3Rules import Pcap3Rules
 from datetime import datetime, date
+from colorama import Fore
 
 # Usage: SplitCap [OPTIONS]...
 #
@@ -97,27 +98,27 @@ Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
             for output in a.stdout:
                 # print(str(output))
                 if 'NMAP' in output.decode("utf-8"):
-                    print("({0}) Ataque de NMAP detectado".format(date.today()))
+                    print(Fore.RED+"({0}) Ataque de NMAP detectado".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Ataque de NMAP detectado"')
                 if 'SNMP' in output.decode("utf-8"):
-                    print("({0}) Ataque via SNMP - Posible escaneo de puertos".format(date.today()))
+                    print(Fore.RED+"({0}) Ataque via SNMP - Posible escaneo de puertos".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Posible escaneo de puertos"')
                 if 'ICMP PING' in output.decode("utf-8"):
-                    print("({0}) Peticiones de ICMP".format(date.today()))
+                    print(Fore.RED+"({0}) Peticiones de ICMP".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Peticiones de ICMP"')
                 if 'ICMP Echo Reply' in output.decode("utf-8"):
-                    print("({0}) Respuesta ICMP".format(date.today()))
+                    print(Fore.RED+"({0}) Respuesta ICMP".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Respuesta ICMP"')
                 if 'DDOS mstream client to handler' in output.decode("utf-8"):
-                    print("({0}) Ataque DOS mstream cliente a escucha - (Se esta recibiendo muchos paquetes)".format(date.today()))
+                    print(Fore.RED+"({0}) Ataque DOS mstream cliente a escucha - (Se esta recibiendo muchos paquetes)".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Ataque DOS mstream cliente a escucha"')
                 if 'BAD-TRAFFIC' in output.decode("utf-8"):
-                    print("[!] Buscando paquetes")
+                    print(Fore.RED+"[!] Buscando paquetes")
                 if 'ARP' in output.decode("utf-8"):
-                    print("[!] Posible ataque ARP detectado")
+                    print(Fore.RED+"[!] Posible ataque ARP detectado")
                     os.system('notify-send "Pyotidsai" "Posible ataque ARP detectado"')
                 if 'meterpreter' in output.decode("utf-8"):
-                    print("[!] Conexion meterpreter detectada via UDP.")
+                    print(Fore.RED+"[!] Conexion meterpreter detectada via UDP.")
                     os.system('notify-send "Pyotidsai" "Conexion meterpreter detectada"')
         print("[*] ERROR [*]")
 
