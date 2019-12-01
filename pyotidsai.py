@@ -2,14 +2,14 @@ import subprocess
 # from PIL import Image
 import io
 
-
 from scapy.all import *
 from scapy.contrib import mqtt
-#import pyfiglet
+# import pyfiglet
+
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import numpy as np
-#import hexdump
+# import hexdump
 import os, time, subprocess
 import shutil
 from Pcap3Rules import Pcap3Rules
@@ -87,6 +87,7 @@ Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
         print('\n [!] Introduce la opción deseada '
               '\n [!] (1) Crear reglas'
               '\n [!] (2) Detectar malware(SNORT)'
+              '\n [!] (3) Machine Learning Classifier'
               '\n [!] (0) Salir')
 
 
@@ -94,31 +95,34 @@ Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
         if informacion == "s" or informacion == "S":
             os.system("stdbuf -o0 snort -A console --daq dump -q -c Snort/snort.conf -i eth0")
         else:
-            a = subprocess.Popen("stdbuf -o0 snort -A console --daq dump -q -c Snort/snort.conf -i eth0".split(),stdout=subprocess.PIPE, bufsize=1)
+            a = subprocess.Popen("stdbuf -o0 snort -A console --daq dump -q -c Snort/snort.conf -i eth0".split(),
+                                 stdout=subprocess.PIPE, bufsize=1)
             for output in a.stdout:
                 # print(str(output))
                 if 'NMAP' in output.decode("utf-8"):
-                    print(Fore.RED+"({0}) Ataque de NMAP detectado".format(date.today()))
+                    print(Fore.RED + "({0}) Ataque de NMAP detectado".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Ataque de NMAP detectado"')
                 if 'SNMP' in output.decode("utf-8"):
-                    print(Fore.RED+"({0}) Ataque via SNMP - Posible escaneo de puertos".format(date.today()))
+                    print(Fore.RED + "({0}) Ataque via SNMP - Posible escaneo de puertos".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Posible escaneo de puertos"')
                 if 'ICMP PING' in output.decode("utf-8"):
-                    print(Fore.RED+"({0}) Peticiones de ICMP".format(date.today()))
+                    print(Fore.RED + "({0}) Peticiones de ICMP".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Peticiones de ICMP"')
                 if 'ICMP Echo Reply' in output.decode("utf-8"):
-                    print(Fore.RED+"({0}) Respuesta ICMP".format(date.today()))
+                    print(Fore.RED + "({0}) Respuesta ICMP".format(date.today()))
                     os.system('notify-send "Pyotidsai" "Respuesta ICMP"')
                 if 'DDOS mstream client to handler' in output.decode("utf-8"):
-                    print(Fore.RED+"({0}) Ataque DOS mstream cliente a escucha - (Se esta recibiendo muchos paquetes)".format(date.today()))
+                    print(
+                        Fore.RED + "({0}) Ataque DOS mstream cliente a escucha - (Se esta recibiendo muchos paquetes)".format(
+                            date.today()))
                     os.system('notify-send "Pyotidsai" "Ataque DOS mstream cliente a escucha"')
                 if 'BAD-TRAFFIC' in output.decode("utf-8"):
-                    print(Fore.RED+"[!] Buscando paquetes")
+                    print(Fore.RED + "[!] Buscando paquetes")
                 if 'ARP' in output.decode("utf-8"):
-                    print(Fore.RED+"[!] Posible ataque ARP detectado")
+                    print(Fore.RED + "[!] Posible ataque ARP detectado")
                     os.system('notify-send "Pyotidsai" "Posible ataque ARP detectado"')
                 if 'meterpreter' or 'ATTACK-RESPONSES' in output.decode("utf-8"):
-                    print(Fore.RED+"[!] Conexion meterpreter detectada via UDP.")
+                    print(Fore.RED + "[!] Conexion meterpreter detectada via UDP.")
                     os.system('notify-send "Pyotidsai" "Conexion meterpreter detectada"')
         print("[*] ERROR [*]")
 
@@ -128,24 +132,71 @@ Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
         opt = input()
         pcap = ""
         if opt == '1':
-                pcap = input('introduce pcap a analizar:')
-                subprocess.run(["python", "Pcap3Rules/Pcap3Rules.py", "-r", pcap, "-s"])
-                print('Finalizado. Se han creado las reglas.')
-                ver = input('[!] ¿Desea ver las reglas creadas? [S/N]')
-                if ver == 'S' or ver == 's':
-                    with (open('snortRules.rules', 'r')) as file:
-                        data = file.read()
-                        print("\x1b[1;33m"+data+'\033[0;m')
-                shutil.copy('snortRules.rules', 'Snort/rules')
+            pcap = input('introduce pcap a analizar:')
+            subprocess.run(["python", "Pcap3Rules/Pcap3Rules.py", "-r", pcap, "-s"])
+            print('Finalizado. Se han creado las reglas.')
+            ver = input('[!] ¿Desea ver las reglas creadas? [S/N]')
+            if ver == 'S' or ver == 's':
+                with (open('snortRules.rules', 'r')) as file:
+                    data = file.read()
+                    print("\x1b[1;33m" + data + '\033[0;m')
+            shutil.copy('snortRules.rules', 'Snort/rules')
 
         elif opt == '2':
             print("[!] Este programa esta creando un pcap en la misma ruta que Pyotidsai, [LOG]")
             print("[!] Estamos analizando los paquetes por posibles ataques\n")
-            informacion = str(input("\n"+"\033[4;35m"+"[+] Desea ver informacion mas completa (snort) [S/N]: "+'\033[0;m'))
+            informacion = str(
+                input("\n" + "\033[4;35m" + "[+] Desea ver informacion mas completa (snort) [S/N]: " + '\033[0;m'))
             snort()
+
+        elif opt == '3':
+            print("\n [!] Bienvenido al Modulo de Clasificación de Tráfico con Machine Learning")
+            print('\n [!] Introduce la opción deseada '
+                  '\n [!] (1) Parsear Pcaps'
+                  '\n [!] (2) Clasificar tráfico'
+                  '\n [!] (0) Salir')
+            mod = input()
+            if mod == '1':
+                print("\n [!] Modulo de parseo de pcaps")
+                print('\n [!] pcapparser.py -p [--pcapfiles ...] -c [--config] '
+                      '\n [!] -p --pcapfiles - ono o mas archivos pcap a parsear'
+                      '\n [!] -c --config - archivo de configuración (config.ini por defecto)')
+                pcaps = input('\n [!] Introduce la ruta completa a los pcaps ')
+                config_file = input('\n [!] Introduce la ruta completa del archivo configuración si tiene una')
+
+                subprocess.run(["python", "ML-Classifier/pcapparser.py", "-p", pcaps, "-c", config_file])
+
+            elif mod == '2':
+                print("\n [!] Modulo Clasificador de paquetes ")
+                print('\n [!] traffic_classifier.py -c [--config] '
+                      '\n [!] -c --config - archivo de configuración (classifiers.yaml por defecto)'
+                      '\n [|] Los siguientes parametros sobreescriben la configuración por defecto'
+                      '\n [!] --load-processors -- carga preprocesadores de funciones personalizadas'
+                      '\n [!] --fit-processors -- se ajusta a los nuevos preprocesadores de funciones'
+                      '\n [!] --load-classifiers -- carga modelos de clasificación personalizados'
+                      '\n [!] --fit-classifiers -- se ajusta a los nuevos modelos de clasificación')
+
+                personalized_cla = input('\n [!] Deseas personalizar el clasificador(Yes or No)').lower()
+
+                if personalized_cla == 'yes':
+                    config_cla = input('Ruta completa del archivo de configuración: ')
+
+                    subprocess.run(['python', 'ML-Classifier/traffic_classifier.py', '-c', config_cla,
+                                    '--load-processors', '--fit-processors', '--load-classifiers', '--fit-classifiers'])
+
+                else:
+                    subprocess.run(['python', 'ML-Classifier/traffic_classifier.py', '-c'])
+
+            elif mod == '0':
+                print('Hasta la próxima!!')
+
+            else:
+                print("")
+                input("No has pulsado ninguna opción correcta...\npulsa una opción para continuar")
+
         elif opt == '0':
             print('Hasta la próxima!!')
-            break;
+            break
         else:
             print("")
             input("No has pulsado ninguna opción correcta...\npulsa una tecla para continuar")
