@@ -117,7 +117,7 @@ Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
                 if 'ARP' in output.decode("utf-8"):
                     print(Fore.RED+"[!] Posible ataque ARP detectado")
                     os.system('notify-send "Pyotidsai" "Posible ataque ARP detectado"')
-                if 'meterpreter' in output.decode("utf-8"):
+                if 'meterpreter' or 'ATTACK-RESPONSES' in output.decode("utf-8"):
                     print(Fore.RED+"[!] Conexion meterpreter detectada via UDP.")
                     os.system('notify-send "Pyotidsai" "Conexion meterpreter detectada"')
         print("[*] ERROR [*]")
