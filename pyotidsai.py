@@ -12,9 +12,17 @@ import numpy as np
 # import hexdump
 import os, time, subprocess
 import shutil
-from Pcap3Rules import Pcap3Rules
 from datetime import datetime, date
 from colorama import Fore
+import numpy
+from PIL import Image
+import binascii
+import errno
+import os
+import re
+from pathlib import Path
+
+PNG_SIZE = 28
 
 # Usage: SplitCap [OPTIONS]...
 #
@@ -43,20 +51,7 @@ from colorama import Fore
 # Example 5: SplitCap -r dumpfile.pcap -ip 1.2.3.4 -port 80 -port 443 -s nosplit
 
 """
-def split_by_session(pcap_path: str):
-    args = ("SplitCap/SplitCap.exe", "-r", pcap_path, "-s", "session")
-    return execute(args).decode()
 
-
-def split_by_host(pcap_path: str):
-    args = ("SplitCap/SplitCap.exe", "-r", pcap_path, "-s", "host")
-    return execute(args).decode()
-
-
-def execute(args):
-    popen = subprocess.Popen(args, stdout=subprocess.PIPE)
-    popen.wait()
-    return popen.stdout.read()
 """
 
 if __name__ == '__main__':
@@ -91,6 +86,63 @@ Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
               '\n [!] (0) Salir')
 
 
+    def split_by_session(pcap_path: str):
+        args = ("SplitCap/SplitCap.exe", "-r", pcap_path, "-s", "session")
+        return execute(args).decode()
+
+
+    def split_by_host(pcap_path: str):
+        args = ("SplitCap/SplitCap.exe", "-r", pcap_path, "-s", "host")
+        return execute(args).decode()
+
+
+    def execute(args):
+        popen = subprocess.Popen(args, stdout=subprocess.PIPE)
+        popen.wait()
+        return popen.stdout.read()
+
+
+    def get_matrix_from_pcap(filename, width):
+        with open(filename, 'rb') as f:
+            content = f.read()
+        hexst = binascii.hexlify(content)
+        fh = numpy.array([int(hexst[i:i + 2], 16) for i in range(0, len(hexst), 2)])
+        rn = int(len(fh) / width)
+        fh = numpy.reshape(fh[:rn * width], (-1, width))
+        fh = numpy.uint8(fh)
+        return fh
+
+
+    def mkdir_p(path):
+        try:
+            os.makedirs(path)
+        except OSError as exc:  # Python >2.5
+            if exc.errno == errno.EEXIST and os.path.isdir(path):
+                pass
+            else:
+                raise
+
+
+    def sessions2png(sessions_path: str):
+        if sessions_path is None:
+            sessions_path = input()
+
+        paths = ([[sessions_path]])
+        for p in paths:
+            dir_full = os.path.join(p[0], 'png')
+            mkdir_p(dir_full)
+            for f in os.listdir(os.path.join(p[0])):
+                bin_full = os.path.join(p[0], f)
+                if f != 'png':
+                    im = Image.fromarray(get_matrix_from_pcap(bin_full, PNG_SIZE))
+                    png_full = os.path.join(dir_full, os.path.splitext(f)[0] + '.png')
+                    im.save(png_full)
+
+        png_paths = dir_full
+
+        return png_paths
+
+
     def snort():
         if informacion == "s" or informacion == "S":
             os.system("stdbuf -o0 snort -A console --daq dump -q -c Snort/snort.conf -i eth0")
@@ -121,7 +173,7 @@ Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
                 if 'ARP' in output.decode("utf-8"):
                     print(Fore.RED + "[!] Posible ataque ARP detectado")
                     os.system('notify-send "Pyotidsai" "Posible ataque ARP detectado"')
-                if 'meterpreter' or 'ATTACK-RESPONSES' in output.decode("utf-8"):
+                if 'check returned root' in output.decode("utf-8"):
                     print(Fore.RED + "[!] Conexion meterpreter detectada via UDP.")
                     os.system('notify-send "Pyotidsai" "Conexion meterpreter detectada"')
         print("[*] ERROR [*]")
@@ -154,6 +206,9 @@ Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
             print('\n [!] Introduce la opción deseada '
                   '\n [!] (1) Parsear Pcaps'
                   '\n [!] (2) Clasificar tráfico'
+                  '\n [!] (3) Split tráfico en sesiones'
+                  '\n [!] (4) Split tráfico por host'
+                  '\n [!] (5) Convertir tráfico a imágenes'
                   '\n [!] (0) Salir')
             mod = input()
             if mod == '1':
@@ -186,6 +241,24 @@ Version: 1.1   Autor: Paloma Sánchez y Juan Pablo Egido   OS: Linux/Debian
 
                 else:
                     subprocess.run(['python', 'ML-Classifier/traffic_classifier.py', '-c'])
+
+
+            elif mod == '3':
+                pcap_path = input('Ingrese la ruta del pcap')
+                split_by_session(pcap_path)
+                print('El tráfico ha sido guardado en: ', Path(pcap_path).resolve().stem, '\n')
+
+            elif mod == '4':
+                pcap_path = input('Ingrese la ruta del pcap')
+                split_by_host(pcap_path)
+                print('El tráfico ha sido guardado en: ', Path(pcap_path).resolve().stem,  '\n')
+
+            elif mod == '5':
+                sessions_path = input('Ingrese la ruta del directorio del tráfico')
+                png_paths = sessions2png(sessions_path)
+
+                print('Las imágenes han sido guardadas en ', png_paths,  '\n')
+
 
             elif mod == '0':
                 print('Hasta la próxima!!')
